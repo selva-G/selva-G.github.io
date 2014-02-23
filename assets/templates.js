@@ -8,6 +8,6 @@ define('appkit/templates/error', ['exports'], function(__exports__){ __exports__
 
 define('appkit/templates/helper-test', ['exports'], function(__exports__){ __exports__['default'] = Ember.Handlebars.compile("<h3>My name is {{reverse-word name}}.</h3>\n"); });
 
-define('appkit/templates/index', ['exports'], function(__exports__){ __exports__['default'] = Ember.Handlebars.compile("<ul class=\"alert alert-warning\">\n{{#each}}\n  <li>{{this}}</li>\n{{/each}}\n</ul>\n"); });
+define('appkit/templates/index', ['exports'], function(__exports__){ __exports__['default'] = Ember.Handlebars.compile("<div class=\"alert alert-info\">\nHey Successfully scaffolded Emberjs for my GIT PAGE!!!\n</div>\n"); });
 
 define('appkit/templates/loading', ['exports'], function(__exports__){ __exports__['default'] = Ember.Handlebars.compile("<h1>Loading...</h1>\n"); });
