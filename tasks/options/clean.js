@@ -1,4 +1,4 @@
 module.exports = {
-  'debug': ['tmp'],
+  'debug': ['tmp', 'assets'],
   'dist': ['tmp', 'dist']
 };
