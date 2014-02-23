@@ -1,5 +1,4 @@
 *.swp
 node_modules/
 bower_components/
-tmp/javascript/
-tmp/transpiled/
+tmp/

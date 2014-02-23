@@ -69,4 +69,12 @@ module.exports = {
       dest: 'dist/'
     }]
   },
+  
+  moveAssets: {
+    cwd: 'tmp/result/assets',
+    expand: true,
+    src: ['**'],
+    dest: 'assets/',
+    filter: 'isFile'
+}
 };

@@ -173,7 +173,8 @@ module.exports = function(grunt) {
         "buildTemplates:debug",
         "buildScripts",
         "buildStyles",
-        "buildIndexHTML:debug"
+        "buildIndexHTML:debug",
+        "copy:moveAssets"
       ]
     }
   });
