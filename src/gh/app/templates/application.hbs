@@ -1,3 +1,29 @@
-<h2 id='title'>I'll be back soon - @selvagsz</h2>
+<section class="header">
+  <header>
+    <div class="header__profile">
+      {{gravatar-image email="selvaganeshbsg@ymail.com" size="400"}}
+    </div>
+    <div class="header__menu">
+      <nav>
+        <ul class="nav">
+          <li>
+            {{link-to 'Blog' 'blog'}}
+          </li>
+          <li>
+            {{link-to 'Archive' 'archive'}}
+          </li>
+          <li>
+            {{link-to 'Journal' 'journal'}}
+          </li>
+          <li>
+            {{link-to 'Playground' 'playground.ember'}}
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</section>
 
-{{outlet}}
+<section class="main-container">
+  {{outlet}}
+</section>

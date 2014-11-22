@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'gh',
+    podModulePrefix: 'gh/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'hash',
