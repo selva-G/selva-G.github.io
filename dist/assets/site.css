@@ -1,0 +1,57 @@
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  background-color: #131C29; }
+
+body {
+  font: 100% "Roboto", sans-serif;
+  color: #fff; }
+
+.home--profile-card-bea30a7b {
+  display: inline-block;
+  margin-top: 150px;
+  border: 1px solid; }
+
+.home--profile-card-bea30a7b .gravatar-image {
+  position: absolute;
+  left: 15px;
+  top: 80%;
+  border-radius: 50%; }
+
+.home--profile-card-bea30a7b .cover-image {
+  position: relative;
+  width: 300px;
+  height: 200px; }
+
+.home--profile-card-bea30a7b .profile-details {
+  padding-top: 100px;
+  background: #5FBDD0;
+  font-size: 35px;
+  text-align: right; }
+
+.home--profile-card-bea30a7b .social-networks {
+  padding-right: 20px;
+  padding-bottom: 10px; }
+  .home--profile-card-bea30a7b .social-networks a {
+    color: #131C29; }
+  .home--profile-card-bea30a7b .social-networks a + a {
+    margin-left: 10px; }
+
+.img-responsive {
+  max-width: 100%;
+  max-height: 100%; }
+
+.profile-container {
+  max-width: 768px;
+  margin: auto;
+  text-align: center; }
+
+/*# sourceMappingURL=site.css.map */

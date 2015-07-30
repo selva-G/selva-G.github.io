@@ -1,0 +1,24 @@
+{
+	"version": 3,
+	"file": "site.css",
+	"sources": [
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/app.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/normalize.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/variables.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/layout.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/pod-styles.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/utilities.scss",
+		"../../broccoli_merge_trees-output_path-X8PRg1fe.tmp/app/styles/profile.scss"
+	],
+	"sourcesContent": [
+		"@import 'normalize.scss';\n@import 'variables.scss';\n@import 'layout.scss';\n\n@import 'pod-styles.scss';\n@import 'utilities.scss';\n@import 'profile.scss';\n",
+		"*, *::before, *::after {\n  box-sizing: border-box;\n}\n\nhtml,\nbody,\nul,\nol {\n  margin: 0;\n  padding: 0;\n}\n",
+		"$font-stack: 'Roboto', sans-serif;\n$primary-color: #fff;\n$background-color: #131C29;\n",
+		"html, body {\n  background-color: $background-color;\n}\n\nbody {\n  font: 100% $font-stack;\n  color: $primary-color;\n}\n",
+		".home--profile-card-bea30a7b{& {\n  display: inline-block;\n  margin-top: 150px;\n  border: 1px solid;\n}\n\n.gravatar-image {\n  position: absolute;\n  left: 15px;\n  top: 80%;\n  border-radius: 50%;\n}\n\n.cover-image {\n  position: relative;\n  width: 300px;\n  height: 200px;\n}\n\n.profile-details {\n  padding-top: 100px;\n  background: #5FBDD0;\n  font-size: 35px;\n  text-align: right;\n}\n\n.social-networks {\n  padding-right: 20px;\n  padding-bottom: 10px;\n\n  a {\n    color: #131C29;\n  }\n\n  a + a {\n    margin-left: 10px;\n  }\n}\n}",
+		".img-responsive {\n  max-width: 100%;\n  max-height: 100%;\n}\n",
+		".profile-container {\n  max-width: 768px;\n  margin: auto;\n  text-align: center;\n}\n"
+	],
+	"mappings": "ACAe,CAAC,EAAE,CAAC,AAAA,QAAQ,EAAE,CAAC,AAAA,OAAO,CAAd;EACrB,UAAU,EAAE,UAAW,GADD;;AAOxB,IAAI;AACJ,IAAI;AACJ,EAAE;AACF,EAAE,CAHC;EACD,MAAM,EAAE,CAAE;EACV,OAAO,EAAE,CAAE,GAFT;;AEPE,IAAI,EAAE,IAAI,CAAL;EACT,gBAAgB,EDCC,OAAO,GCFd;;AAIZ,IAAI,CAAC;EACH,IAAI,EAAE,IAAI,CDLC,QAAQ,EAAE,UAAU;ECM/B,KAAK,EDLS,IAAI,GCGd;;ACJuB,4BAA4B,CAA1B;EAC7B,OAAO,EAAE,YAAa;EACtB,UAAU,EAAE,KAAM;EAClB,MAAM,EAAE,SAAU,GAHY;;AAMhC,4BAA4B,CAAC,eAAe,CAA5B;EACd,QAAQ,EAAE,QAAS;EACnB,IAAI,EAAE,IAAK;EACX,GAAG,EAAE,GAAI;EACT,aAAa,EAAE,GAAI,GAJJ;;AAOjB,4BAA4B,CAAC,YAAY,CAA5B;EACX,QAAQ,EAAE,QAAS;EACnB,KAAK,EAAE,KAAM;EACb,MAAM,EAAE,KAAM,GAHF;;AAMd,4BAA4B,CAAC,gBAAgB,CAA5B;EACf,WAAW,EAAE,KAAM;EACnB,UAAU,EAAE,OAAQ;EACpB,SAAS,EAAE,IAAK;EAChB,UAAU,EAAE,KAAM,GAJF;;AAOlB,4BAA4B,CAAC,gBAAgB,CAA5B;EACf,aAAa,EAAE,IAAK;EACpB,cAAc,EAAE,IAAK,GAFL;EAIhB,4BAA4B,CAAC,gBAAgB,CAAC,CAAC,CAA7C;IACA,KAAK,EAAE,OAAQ,GADd;EAIC,4BAA4B,CAAC,gBAAgB,CAAC,CAAC,GAAG,CAAC,CAAjD;IACJ,WAAW,EAAE,IAAK,GADb;;AClCT,eAAe,CAAC;EACd,SAAS,EAAE,IAAK;EAChB,UAAU,EAAE,IAAK,GAFF;;ACAjB,kBAAkB,CAAC;EACjB,SAAS,EAAE,KAAM;EACjB,MAAM,EAAE,IAAK;EACb,UAAU,EAAE,MAAO,GAHD",
+	"names": []
+}

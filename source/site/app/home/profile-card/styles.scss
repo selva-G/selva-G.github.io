@@ -1,0 +1,38 @@
+& {
+  display: inline-block;
+  margin-top: 150px;
+  border: 1px solid;
+}
+
+.gravatar-image {
+  position: absolute;
+  left: 15px;
+  top: 80%;
+  border-radius: 50%;
+}
+
+.cover-image {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+.profile-details {
+  padding-top: 100px;
+  background: #5FBDD0;
+  font-size: 35px;
+  text-align: right;
+}
+
+.social-networks {
+  padding-right: 20px;
+  padding-bottom: 10px;
+
+  a {
+    color: #131C29;
+  }
+
+  a + a {
+    margin-left: 10px;
+  }
+}
