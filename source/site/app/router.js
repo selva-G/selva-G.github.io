@@ -10,7 +10,7 @@ Router.map(function() {
 
   this.route('demos', function() {
     this.route('carousel', function() {
-      this.route('simple');
+      this.route('simple', { path: '/' });
       this.route('rich');
     });
   });
