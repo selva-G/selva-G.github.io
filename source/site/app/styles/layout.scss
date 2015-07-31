@@ -6,3 +6,18 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
 }
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.demos-section {
+  max-width: 650px;
+  margin: auto;
+  margin-top: 85px;
+}
+
+.main-navs {
+  margin-top: 20px;
+}

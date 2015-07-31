@@ -7,6 +7,14 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home', { path: '/' });
+
+  this.route('demos', function() {
+    this.route('carousel', function() {
+      this.route('simple');
+      this.route('rich');
+    });
+  });
+  this.route('codeworks');
 });
 
 export default Router;
