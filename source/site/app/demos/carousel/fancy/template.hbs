@@ -1,0 +1,29 @@
+<div class="fancy-carousel">
+  {{#carousel-container transition-interval=100}}
+    {{carousel-arrow direction="left" class="line-arrow left"}}
+    {{carousel-arrow direction="right" class="line-arrow right"}}
+
+    {{#carousel-body tagName="ol"}}
+      {{#carousel-item tagName="li"}}
+        1
+      {{/carousel-item}}
+      {{#carousel-item tagName="li"}}
+        2
+      {{/carousel-item}}
+      {{#carousel-item tagName="li"}}
+        3
+      {{/carousel-item}}
+      {{#carousel-item tagName="li"}}
+        4
+      {{/carousel-item}}
+    {{/carousel-body}}
+  {{/carousel-container}}
+
+
+  <div class="credits">
+    Demo inspired from
+    <a href="http://christianheilmann.com/2015/04/08/keeping-it-simple-coding-a-carousel/" target="_blank">
+      http://christianheilmann.com/2015/04/08/keeping-it-simple-coding-a-carousel/
+    </a>
+  </div>
+</div>

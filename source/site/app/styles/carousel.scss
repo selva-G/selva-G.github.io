@@ -90,3 +90,48 @@
 .line-arrow.left:hover, .line-arrow.right:hover {
   border-color: #444;
 }
+
+
+/** Fancy Carousel **/
+
+.fancy-carousel {
+  margin-top: 50px;
+
+  .carousel-container {
+    width: 150px;
+    height: 140px;
+    background-color: #fff;
+  }
+
+  // This will be removed
+  ol.carousel-body {
+    list-style: none;
+    position: static;
+  }
+
+  .carousel-item {
+    display: block;
+    font-size: 100px;
+    text-align: center;
+    width: 100%;
+    color: #333;
+
+    position: absolute;
+    top: 150px;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.5s;
+
+    &.active {
+      top: 30px;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .line-arrow {
+    width: 15px;
+    height: 15px;
+    top: 24%;
+  }
+}

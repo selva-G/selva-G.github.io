@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('carousel', function() {
       this.route('simple', { path: '/' });
       this.route('rich');
+      this.route('fancy');
     });
   });
   this.route('codeworks');
