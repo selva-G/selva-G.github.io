@@ -22,4 +22,8 @@ h6 {
 a {
   text-decoration: none;
   color: $anchor-color;
+
+  &:hover {
+    color: $anchor-hover-color;
+  }
 }

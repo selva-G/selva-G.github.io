@@ -14,7 +14,10 @@ Router.map(function() {
       this.route('rich');
       this.route('fancy');
     });
+
+    this.route('fbvideo');
   });
+  
   this.route('codeworks');
 });
 
