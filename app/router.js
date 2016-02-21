@@ -16,8 +16,9 @@ Router.map(function() {
     });
 
     this.route('fbvideo');
+    this.route('magnifier');
   });
-  
+
   this.route('codeworks');
 });
 
