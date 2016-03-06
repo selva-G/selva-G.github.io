@@ -1,11 +1,39 @@
 <div class="demos-section">
-  <h2>[WIP] Ember Image Magnifier Component</h2>
+  <header>
+    <h2>Ember Image Magnifier Component</h2>
+    <iframe src="https://ghbtns.com/github-btn.html?user=selvagsz&repo=ember-image-magnifier&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+  </header>
 
-  <iframe src="https://ghbtns.com/github-btn.html?user=selvagsz&repo=ember-image-magnifier&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+  <main>
+    <section>
+      <h3 class="header">Floating Previewer</h3>
 
-  <div class="fb-video-container">
-    {{image-magnifier width=200 height=200
-      src="http://lorempixel.com/image_output/nightlife-q-c-200-200-8.jpg"
-      preview-src="http://lorempixel.com/image_output/nightlife-q-c-500-500-8.jpg"}}
-  </div>
+      <div class="demo-container">
+        <div class="demo">
+          {{image-magnifier width=200
+            attachToLens=true
+            src="http://lorempixel.com/image_output/city-q-c-200-200-4.jpg"
+            preview-src="http://lorempixel.com/image_output/city-q-c-600-600-4.jpg"}}
+        </div>
+        <div class="code">
+          {{code-snippet name="floating-previewer.hbs"}}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="header">Static Previewer</h3>
+
+      <div class="demo-container">
+        <div class="demo">
+          {{image-magnifier width=200
+            src="http://lorempixel.com/image_output/city-q-c-200-200-4.jpg"
+            preview-src="http://lorempixel.com/image_output/city-q-c-600-600-4.jpg"}}
+        </div>
+        <div class="code">
+          {{code-snippet name="static-previewer.hbs"}}
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
