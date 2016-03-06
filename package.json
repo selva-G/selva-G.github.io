@@ -42,7 +42,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-facebook-video": "0.0.2",
-    "ember-image-magnifier": "https://github.com/selvagsz/ember-image-magnifier.git",
+    "ember-image-magnifier": "0.0.1",
     "ember-resolver": "^2.0.3"
   }
 }
