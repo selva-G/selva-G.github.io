@@ -7,13 +7,15 @@
   <main>
     <section>
       <h3 class="header">Floating Previewer</h3>
-
       <div class="demo-container">
         <div class="demo">
-          {{image-magnifier width=200
-            attachToLens=true
-            src="http://lorempixel.com/image_output/city-q-c-200-200-4.jpg"
-            preview-src="http://lorempixel.com/image_output/city-q-c-600-600-4.jpg"}}
+          <div>
+            {{image-magnifier width=300
+              attachToLens=true
+              src="assets/images/wyvern-theatre-seating.gif"
+              preview-src="assets/images/wyvern-theatre-seating.gif"}}
+          </div>
+          <small class="note text-muted"><i>Random image from google</i></small>
         </div>
         <div class="code">
           {{code-snippet name="floating-previewer.hbs"}}
@@ -23,7 +25,6 @@
 
     <section>
       <h3 class="header">Static Previewer</h3>
-
       <div class="demo-container">
         <div class="demo">
           {{image-magnifier width=200

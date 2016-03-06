@@ -5,6 +5,7 @@ html, body {
 body {
   font: 100% $font-stack;
   color: $primary-color;
+  overflow-x: hidden;
 }
 
 .container {
@@ -28,10 +29,12 @@ body {
   }
 
   main {
-    padding: 30px 0 300px 0;
+    padding-bottom: 300px;
 
     section + section {
       margin-top: 50px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
     }
 
     .header {
@@ -51,6 +54,11 @@ body {
       display: flex;
       justify-content: space-between;
       margin-top: 30px;
+
+      .code {
+        margin-left: 30px;
+        max-width: 50%;
+      }
     }
   }
 }

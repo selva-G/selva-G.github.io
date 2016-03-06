@@ -1,21 +1,109 @@
 <div class="demos-section">
-  <h2>Ember Carousel Component</h2>
+  <header>
+    <h2>Ember Carousel Component</h2>
+    <iframe src="https://ghbtns.com/github-btn.html?user=selvagsz&repo=ember-carousel&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+  </header>
 
-  <iframe src="https://ghbtns.com/github-btn.html?user=selvagsz&repo=ember-carousel&type=star&count=true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+  <main>
+    <section>
+      <h3 class="header">Simple Form</h3>
+      <div class="demo-container">
+        <div class="demo">
+          <div class="simple-carousel">
+            {{#carousel-container transition-interval=500}}
+              {{#carousel-body}}
+                {{#carousel-item}}
+                  Emberjs
+                {{/carousel-item}}
+                {{#carousel-item}}
+                  Reactjs
+                {{/carousel-item}}
+                {{#carousel-item}}
+                  Angularjs
+                {{/carousel-item}}
+              {{/carousel-body}}
 
-  <ul class="nav">
-    <li>
-      {{link-to "Bare Form" "demos.carousel.simple"}}
-    </li>
+              {{#carousel-arrow direction="left" tagName="button"}}
+                Slide Left
+              {{/carousel-arrow}}
+              {{#carousel-arrow direction="right" tagName="button"}}
+                Slide Right
+              {{/carousel-arrow}}
+            {{/carousel-container}}
+          </div>
+        </div>
+        <div class="code">
+          {{code-snippet name="bare-carousel.hbs"}}
+        </div>
+      </div>
+    </section>
 
-    <li>
-      {{link-to "Rich Form" "demos.carousel.rich"}}
-    </li>
+    <section>
+      <h3 class="header">Rich Form</h3>
+      <div class="demo-container">
+        <div class="demo">
+          <div class="rich-carousel">
+            {{#carousel-container transition-interval=400}}
+              {{#carousel-body}}
+                {{#carousel-item}}
+                  <img class="img-responsive" src="https://unsplash.imgix.net/photo-1428452932365-4e7e1c4b0987?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050" />
+                {{/carousel-item}}
+                {{#carousel-item}}
+                  <img class="img-responsive" src="https://ununsplash.imgix.net/photo-1429547584745-d8bec594c82e?q=75&fm=jpg&w=1080&fit=max&s=1870a82969024ba6816b271a49ca5876" />
+                {{/carousel-item}}
+                {{#carousel-item}}
+                  <img class="img-responsive" src="https://ununsplash.imgix.net/photo-1433785124354-92116416b870?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050" />
+                {{/carousel-item}}
+              {{/carousel-body}}
 
-    <li>
-      {{link-to "Fancy Form" "demos.carousel.fancy"}}
-    </li>
-  </ul>
+              {{carousel-arrow direction="left" class="line-arrow left"}}
+              {{carousel-arrow direction="right" class="line-arrow right"}}
+            {{/carousel-container}}
+          </div>
+        </div>
+        <div class="code">
+          {{code-snippet name="rich-carousel.hbs"}}
+        </div>
+      </div>
+    </section>
 
-  {{outlet}}
+    <section>
+      <h3 class="header">Fancy Form</h3>
+      <div class="demo-container">
+        <div class="demo">
+          <div class="fancy-carousel">
+            {{#carousel-container transition-interval=100}}
+              {{carousel-arrow direction="left" class="line-arrow left"}}
+              {{carousel-arrow direction="right" class="line-arrow right"}}
+
+              {{#carousel-body tagName="ol"}}
+                {{#carousel-item tagName="li"}}
+                  1
+                {{/carousel-item}}
+                {{#carousel-item tagName="li"}}
+                  2
+                {{/carousel-item}}
+                {{#carousel-item tagName="li"}}
+                  3
+                {{/carousel-item}}
+                {{#carousel-item tagName="li"}}
+                  4
+                {{/carousel-item}}
+              {{/carousel-body}}
+            {{/carousel-container}}
+
+            <div class="credits">
+              Demo inspired from
+              <a href="http://christianheilmann.com/2015/04/08/keeping-it-simple-coding-a-carousel/" target="_blank">
+                http://christianheilmann.com/2015/04/08/keeping-it-simple-coding-a-carousel/
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="code">
+          {{code-snippet name="fancy-carousel.hbs"}}
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

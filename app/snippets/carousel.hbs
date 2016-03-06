@@ -1,0 +1,63 @@
+{{! BEGIN-SNIPPET bare-carousel}}
+{{#carousel-container transition-interval=500}}
+  {{#carousel-body}}
+    {{#carousel-item}}
+      Emberjs
+    {{/carousel-item}}
+    {{#carousel-item}}
+      Reactjs
+    {{/carousel-item}}
+    {{#carousel-item}}
+      Angularjs
+    {{/carousel-item}}
+  {{/carousel-body}}
+
+  {{#carousel-arrow direction="left" tagName="button"}}
+    Slide Left
+  {{/carousel-arrow}}
+  {{#carousel-arrow direction="right" tagName="button"}}
+    Slide Right
+  {{/carousel-arrow}}
+{{/carousel-container}}
+{{! END-SNIPPET}}
+
+{{! BEGIN-SNIPPET rich-carousel}}
+{{#carousel-container transition-interval=400}}
+  {{#carousel-body}}
+    {{#carousel-item}}
+      <img class="img-responsive" src="https://unsplash.imgix.net/photo-1428452932365-4e7e1c4b0987?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050" />
+    {{/carousel-item}}
+    {{#carousel-item}}
+      <img class="img-responsive" src="https://ununsplash.imgix.net/photo-1429547584745-d8bec594c82e?q=75&fm=jpg&w=1080&fit=max&s=1870a82969024ba6816b271a49ca5876" />
+    {{/carousel-item}}
+    {{#carousel-item}}
+      <img class="img-responsive" src="https://ununsplash.imgix.net/photo-1433785124354-92116416b870?dpr=2&fit=crop&fm=jpg&h=700&q=75&w=1050" />
+    {{/carousel-item}}
+  {{/carousel-body}}
+
+  {{carousel-arrow direction="left" class="line-arrow left"}}
+  {{carousel-arrow direction="right" class="line-arrow right"}}
+{{/carousel-container}}
+{{! END-SNIPPET}}
+
+{{! BEGIN-SNIPPET fancy-carousel}}
+{{#carousel-container transition-interval=100}}
+  {{carousel-arrow direction="left" class="line-arrow left"}}
+  {{carousel-arrow direction="right" class="line-arrow right"}}
+
+  {{#carousel-body tagName="ol"}}
+    {{#carousel-item tagName="li"}}
+      1
+    {{/carousel-item}}
+    {{#carousel-item tagName="li"}}
+      2
+    {{/carousel-item}}
+    {{#carousel-item tagName="li"}}
+      3
+    {{/carousel-item}}
+    {{#carousel-item tagName="li"}}
+      4
+    {{/carousel-item}}
+  {{/carousel-body}}
+{{/carousel-container}}
+{{! END-SNIPPET}}

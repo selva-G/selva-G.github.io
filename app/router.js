@@ -9,12 +9,7 @@ Router.map(function() {
   this.route('home', { path: '/' });
 
   this.route('demos', function() {
-    this.route('carousel', function() {
-      this.route('simple', { path: '/' });
-      this.route('rich');
-      this.route('fancy');
-    });
-
+    this.route('carousel');
     this.route('fbvideo');
     this.route('magnifier');
   });
