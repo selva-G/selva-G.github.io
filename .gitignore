@@ -1,7 +1,9 @@
 # dependencies
 node_modules/
 
+# output
+build/
+
 # misc
 npm-debug.log
 *.orig
-
