@@ -24,7 +24,7 @@ var metalsmith = Metalsmith(__dirname)
   .use(assets())
   .use(autoprefixer())
   .use(sass())
-  .use(beautify());
+  .use(beautify()); // dev
 
 metalsmith.use(browserSync({
   server: './build',
