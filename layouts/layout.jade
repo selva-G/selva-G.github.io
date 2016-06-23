@@ -4,19 +4,23 @@ html(lang="en")
   head
     block head
       title= pageTitle
-      meta(charset='utf-8')
-      meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-      link(rel='stylesheet' href='/styles/app.css')
+      meta(charset="utf-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+      link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans")
+      link(rel="stylesheet" href="/styles/app.css")
+      link(rel="stylesheet" href="/vendor/prism.css")
 
   body(id=pageId)
-    section#nav-section
-      block nav
-        p Navs here
+    div#wrapper
+      section#nav-section
+        block nav
+          p Navs here
 
-    section#main-section
-      block content
+      section#main-section
+        block content
 
-    section#footer-section
-      block footer
+      section#footer-section
+        block footer
 
-    script(src="/js/app.js")
+    block scripts
+      script(src="/js/app.js")

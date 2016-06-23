@@ -1,5 +1,8 @@
 extends ./layout
 
 block append content
+  h1!= title
   div!= contents
   
+block append scripts
+  script(src="/vendor/prism.js")

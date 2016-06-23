@@ -11,19 +11,29 @@ var permalinks = require('metalsmith-permalinks');
 var beautify = require('metalsmith-beautify');
 var assets = require('metalsmith-assets');
 var changed = require('metalsmith-changed');
+var metalsmithPrism = require('metalsmith-prism');
 
 var metalsmith = Metalsmith(__dirname)
-  .clean(false)
   .source('content')
   .use(drafts())
   .use(markdown())
+  .use(metalsmithPrism({
+    lineNumbers: true
+  }))
   .use(layouts('jade'))
   .use(permalinks({
     pattern: ':title'
   }))
   .use(assets())
+  .use(sass({
+    file: './public/styles/app.scss',
+    includePaths: ['./public/styles/']
+  }))
   .use(autoprefixer())
-  .use(sass())
+  .use(assets({
+    source: './vendor/prism/',
+    destination: './vendor/'
+  }))
   .use(beautify()); // dev
 
 metalsmith.use(browserSync({
