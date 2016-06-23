@@ -19,7 +19,6 @@
   "homepage": "https://github.com/selvagsz/selvagsz.github.io#readme",
   "devDependencies": {
     "autoprefix": "^0.1.4",
-    "highlight.js": "^9.4.0",
     "jade": "^1.11.0",
     "jstransformer-verbatim": "^1.0.0",
     "metalsmith": "^2.1.0",
