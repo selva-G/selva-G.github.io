@@ -1,5 +1,6 @@
 'use strict'
 
+var cheerio = require('cheerio');
 var Metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
@@ -11,14 +12,15 @@ var permalinks = require('metalsmith-permalinks');
 var beautify = require('metalsmith-beautify');
 var assets = require('metalsmith-assets');
 var changed = require('metalsmith-changed');
-var metalsmithPrism = require('metalsmith-prism');
 
 var metalsmith = Metalsmith(__dirname)
   .source('content')
   .use(drafts())
-  .use(markdown())
-  .use(metalsmithPrism({
-    lineNumbers: true
+  .use(markdown({
+    langPrefix: 'hljs lang-',
+    highlight: function(code, lang) {
+      return require('highlight.js').highlightAuto(code, [lang]).value;
+    }
   }))
   .use(layouts('jade'))
   .use(permalinks({
@@ -31,10 +33,9 @@ var metalsmith = Metalsmith(__dirname)
   }))
   .use(autoprefixer())
   .use(assets({
-    source: './vendor/prism/',
+    source: './vendor/highlight/',
     destination: './vendor/'
-  }))
-  .use(beautify()); // dev
+  }));
 
 metalsmith.use(browserSync({
   server: './build',

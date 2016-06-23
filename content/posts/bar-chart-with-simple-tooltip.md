@@ -26,15 +26,12 @@ The listener function gets called with the current datum bound with the bar , cu
 Using the getBoundingClientRect(), we can get the dimensions of the rect bar.  Thereby we can pass the left and top position to the tooltip function along with the data to be displayed.
 
 ```javascript
-
 .on('mouseover', function(d) {
   var clientRect = this.getBoundingClientRect();
   toolTip.show( {top: clientRect.top, left: clientRect.left + clientRect.width/2 }, d );
-})
-.on('mouseout', function(d) {
+}).on('mouseout', function(d) {
   toolTip.cleanup();
 });
-
 ```
 
 You could view the end result [here](http://jsfiddle.net/selvaG/4kgwP/6/).
