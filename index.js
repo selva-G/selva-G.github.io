@@ -13,14 +13,15 @@ var permalinks = require('metalsmith-permalinks');
 var beautify = require('metalsmith-beautify');
 var assets = require('metalsmith-assets');
 var changed = require('metalsmith-changed');
-var handlebars = require('handlebars');
-var handlebarsLayouts = require('handlebars-layouts');
+var Handlebars = require('handlebars');
 var registerHelpers = require('metalsmith-register-helpers');
 var inPlace = require('metalsmith-in-place');
 
-handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
+Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
 var metalsmith = Metalsmith(__dirname)
+  .clean(false)
+  .use(changed())
   .source('content')
   .use(drafts())
   .use(registerHelpers())

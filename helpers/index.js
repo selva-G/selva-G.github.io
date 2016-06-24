@@ -1,5 +1,5 @@
-var handlebars = require('handlebars');
+var Handlebars = require('handlebars');
 var handlebarsLayouts = require('handlebars-layouts');
 
 // Register helpers
-module.exports = handlebars.registerHelper(handlebarsLayouts(handlebars));
+module.exports = Handlebars.registerHelper(handlebarsLayouts(Handlebars));
