@@ -1,5 +1,5 @@
 ---
-layout: post.jade
+layout: post.hbs
 pageTitle: Blogger - Metalsmith
 title: Hello World
 drafts: true

@@ -1,5 +1,5 @@
 ---
-layout: post.jade
+layout: post.hbs
 pageTitle: Simple Tooltip - D3
 title: Bar Chart with Simple Tooltip
 drafts: true
@@ -36,4 +36,4 @@ Using the getBoundingClientRect(), we can get the dimensions of the rect bar.  T
 
 You could view the end result [here](http://jsfiddle.net/selvaG/4kgwP/6/).
 
-<iframe allowfullscreen="allowfullscreen" frameborder="0" height="500" src="http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/" width="100%"></iframe>
+{{iframe src="http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/" height="400"}}

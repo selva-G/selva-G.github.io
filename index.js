@@ -1,5 +1,6 @@
 'use strict'
 
+var fs = require('fs');
 var cheerio = require('cheerio');
 var Metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
@@ -12,17 +13,28 @@ var permalinks = require('metalsmith-permalinks');
 var beautify = require('metalsmith-beautify');
 var assets = require('metalsmith-assets');
 var changed = require('metalsmith-changed');
+var handlebars = require('handlebars');
+var handlebarsLayouts = require('handlebars-layouts');
+var registerHelpers = require('metalsmith-register-helpers');
+var inPlace = require('metalsmith-in-place');
+
+handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
 var metalsmith = Metalsmith(__dirname)
   .source('content')
   .use(drafts())
+  .use(registerHelpers())
+  .use(inPlace({
+    engine: 'handlebars',
+    pattern: '*.md'
+  }))
   .use(markdown({
     langPrefix: 'hljs lang-',
     highlight: function(code, lang) {
       return require('highlight.js').highlightAuto(code, [lang]).value;
     }
   }))
-  .use(layouts('jade'))
+  .use(layouts('handlebars'))
   .use(permalinks({
     pattern: ':title'
   }))
@@ -42,7 +54,8 @@ metalsmith.use(browserSync({
   files: [
     'content/**/*.md',
     'layouts/**/*.jade',
-    'public/**/*'
+    'public/**/*',
+    'helpers/**/*'
   ],
   ui: false,
   open: false

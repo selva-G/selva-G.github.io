@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    {{#block "head"}}
+      <title>{{pageTitle}}</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/app.css" />
+      <link rel="stylesheet" href="/vendor/hljs-monokai-sublime.css" />
+    {{/block}}
+  </head>
+
+  <body id={{pageId}}>
+    <div id="wrapper">
+      <section id="nav-section">
+        {{#block "nav"}}
+          <p>Navs here</p>
+        {{/block}}
+      </section>
+
+      <section id="main-section">
+        {{#block "content"}}
+        {{/block}}
+      </section>
+
+      <section id="footer">
+        {{#block "footer"}}
+        {{/block}}
+      </section>
+    </div>
+
+    {{#block "scripts"}}
+      
+    {{/block}}
+  </body>
+</html>
