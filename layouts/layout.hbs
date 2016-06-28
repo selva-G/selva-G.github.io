@@ -13,23 +13,29 @@
     <div id="wrapper">
       <section id="nav-section">
         {{#block "nav"}}
-          <p>Navs here</p>
+          <button id="nav-button">Menu</button>
         {{/block}}
       </section>
 
-      <section id="main-section">
+      <article id="main-section">
         {{#block "content"}}
         {{/block}}
-      </section>
+      </article>
 
-      <section id="footer">
+      <footer id="footer">
         {{#block "footer"}}
         {{/block}}
-      </section>
+      </footer>
     </div>
 
     {{#block "scripts"}}
-      
+      <script src="/js/nominal-jquery.js"></script>
+      <script>
+        var $navButton = document.getElementById('nav-button');
+        $navButton.addEventListener('click', function() {
+
+        });
+      </script>
     {{/block}}
   </body>
 </html>

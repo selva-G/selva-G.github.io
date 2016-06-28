@@ -1,0 +1,19 @@
+{{#extend "layout"}}
+  {{#content "content"}}
+    <h1>{{title}}</h1>
+
+    <ul>
+      {{#each pagination.files}}
+        <li>
+          <a href="/{{this.path}}">{{this.title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+    {{#if pagination.previous}}
+      <a href="/{{pagination.previous.path}}">Prev</a>
+    {{/if}}
+    {{#if pagination.next}}
+      <a href="/{{pagination.next.path}}">Next</a>
+    {{/if}}
+  {{/content}}
+{{/extend}}

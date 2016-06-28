@@ -3,6 +3,8 @@ layout: post.hbs
 pageTitle: Simple Tooltip - D3
 title: Bar Chart with Simple Tooltip
 drafts: true
+collection: posts
+date: 2013-02-21
 ---
 
 D3js is such an awesome framework that helps out in manipulating the DOM based on data. The data is bound to the nodes and is made available on every operators (.style(), .attr() , etc).

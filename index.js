@@ -16,18 +16,18 @@ var changed = require('metalsmith-changed');
 var Handlebars = require('handlebars');
 var registerHelpers = require('metalsmith-register-helpers');
 var inPlace = require('metalsmith-in-place');
+var collections = require('metalsmith-collections');
+var pagination = require('metalsmith-pagination');
 
 Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
 var metalsmith = Metalsmith(__dirname)
-  .clean(false)
-  .use(changed())
   .source('content')
   .use(drafts())
   .use(registerHelpers())
   .use(inPlace({
     engine: 'handlebars',
-    pattern: '*.md'
+    pattern: '**/*.md'
   }))
   .use(markdown({
     langPrefix: 'hljs lang-',
@@ -35,9 +35,23 @@ var metalsmith = Metalsmith(__dirname)
       return require('highlight.js').highlightAuto(code, [lang]).value;
     }
   }))
+  .use(collections({
+    posts: {
+      pattern: 'content/posts/*.md',
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
+  .use(pagination({
+    'collections.posts': {
+      perPage: 1,
+      layout: 'posts.hbs',
+      path: 'posts/:num/index.html'
+    }
+  }))
   .use(layouts('handlebars'))
   .use(permalinks({
-    pattern: ':title'
+    pattern: ':collection/:title'
   }))
   .use(assets())
   .use(sass({
@@ -54,7 +68,7 @@ metalsmith.use(browserSync({
   server: './build',
   files: [
     'content/**/*.md',
-    'layouts/**/*.jade',
+    'layouts/**/*.hbs',
     'public/**/*',
     'helpers/**/*'
   ],

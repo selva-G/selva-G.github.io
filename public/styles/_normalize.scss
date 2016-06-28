@@ -26,6 +26,18 @@ a {
   }
 }
 
+button {
+  padding: 8px 15px;
+  font-size: 15px;
+  background: transparent;
+  border: 2px solid #000;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 code:not(.hljs) {
   font-family: monospace,monospace;
   padding: 2px 4px;
