@@ -1,0 +1,18 @@
+blockquote {
+  &.callout-error {
+    background-color: #f2dede;
+    border-color: #e69d9d;
+  }
+  &.callout-info {
+    background-color: #d9edf7;
+    border-color: #8ecae8;
+  }
+  &.callout-warning {
+    background-color: #fcf8e3;
+    border-color: #f3e393;
+  }
+  &.callout-success {
+    background-color: #dff0d8;
+    border-color: #84b76e;
+  }
+}
