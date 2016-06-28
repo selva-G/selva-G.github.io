@@ -10,11 +10,21 @@
   </head>
 
   <body id={{pageId}}>
-    <div id="wrapper">
+    <div id="wrapper" class="">
+      {{#block "nav"}}
+        <button id="nav-button">Menu</button>
+      {{/block}}
       <section id="nav-section">
-        {{#block "nav"}}
-          <button id="nav-button">Menu</button>
-        {{/block}}
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a href="/posts">Blog</a></li>
+          </ul>
+        </nav>
       </section>
 
       <article id="main-section">
@@ -31,9 +41,9 @@
     {{#block "scripts"}}
       <script src="/js/nominal-jquery.js"></script>
       <script>
-        var $navButton = document.getElementById('nav-button');
-        $navButton.addEventListener('click', function() {
-
+        var $navButton = $('#nav-button');
+        $navButton[0].addEventListener('click', function() {
+          $('#wrapper').toggleClass('show-menu')
         });
       </script>
     {{/block}}

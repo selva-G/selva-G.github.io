@@ -8,8 +8,52 @@
 
 #nav-section {
 	position: absolute;
-	button {
-		margin: 20px;
+	z-index: 1001;
+	width: 240px;
+	height: 100vh;
+	background: #414048;
+	color: #d8d7d3;
+	-webkit-transform: translate3d(-240px, -50vh,0);
+	transform: translate3d(-240px,-50vh,0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+
+	> nav {
+		margin-top: 50px;
+
+		.list-unstyled > li > a {
+			padding: 10px 20px;
+		}
+	}
+}
+
+#wrapper.show-menu #nav-section {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+#nav-button {
+	position: absolute;
+	margin: 20px;
+	z-index: 1111;
+}
+
+.profile {
+	text-align: center;
+	padding-top: 75px;
+
+	.name {
+		font-size: 1.5em;
+	}
+
+	.desc {
+		font-size: 0.9em;
+	}
+
+	> img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
 	}
 }
 

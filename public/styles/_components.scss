@@ -21,7 +21,7 @@ ul.list-unstyled {
   list-style: none;
 
   > li > a {
-    display: inline-block;
+    display: block;
 
     &:hover, :focus {
       border: 0;

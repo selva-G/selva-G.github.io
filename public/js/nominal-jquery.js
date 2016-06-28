@@ -37,13 +37,17 @@ $.prototype.toggleClass = function(className) {
 
 $.prototype.each = function(iteratee, callback) {
   var index;
-  if (Array.isArray(iteratee)) { //TODO: should check for array-like
+  if (arguments.length === 1) {
+    callback = iteratee;
+    iteratee = this;
+  }
+  if (iteratee.length) { //TODO: should check for array-like
     for (index=0, length=iteratee.length; index<length; index++) {
-      callback.call(iteratee[index], index, iteratee[index]);
+      callback.call(iteratee[index], iteratee[index], index);
     }
   } else {
     for (index in iteratee) {
-      callback.call(iteratee[index], index, iteratee[index]);
+      callback.call(iteratee[index], iteratee[index], index);
     }
   }
 }
