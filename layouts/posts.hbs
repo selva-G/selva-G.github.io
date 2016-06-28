@@ -1,19 +1,22 @@
 {{#extend "layout"}}
   {{#content "content"}}
-    <h1>{{title}}</h1>
+    <h1>All Posts</h1>
 
-    <ul>
+    <ul class="list-unstyled posts-list">
       {{#each pagination.files}}
         <li>
-          <a href="/{{this.path}}">{{this.title}}</a>
+          <h2><a href="/{{this.path}}">{{this.title}}</a></h2>
+          <p>{{{this.excerpt}}}</p>
         </li>
       {{/each}}
     </ul>
-    {{#if pagination.previous}}
-      <a href="/{{pagination.previous.path}}">Prev</a>
-    {{/if}}
-    {{#if pagination.next}}
-      <a href="/{{pagination.next.path}}">Next</a>
-    {{/if}}
+    <div class="btn-toolbar text-center">
+      {{#if pagination.previous}}
+        <a class="btn" href="/{{pagination.previous.path}}">Newer</a>
+      {{/if}}
+      {{#if pagination.next}}
+        <a class="btn" href="/{{pagination.next.path}}">Older</a>
+      {{/if}}
+    </div>
   {{/content}}
 {{/extend}}

@@ -16,3 +16,52 @@ blockquote {
     border-color: #84b76e;
   }
 }
+
+ul.list-unstyled {
+  list-style: none;
+
+  > li > a {
+    display: inline-block;
+
+    &:hover, :focus {
+      border: 0;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 24px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  font-size: 0.85em;
+
+  &:hover, &:focus {
+    color: #333;
+    background-color: #f3f3f3;
+    border-color: #adadad
+  }
+}
+
+a.btn {
+  &:hover, &:focus {
+    border-color: #ccc;
+  }
+}

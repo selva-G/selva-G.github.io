@@ -12,3 +12,19 @@
 		margin: 20px;
 	}
 }
+
+.posts-list > li {
+	> h2 {
+		margin-bottom: 0;
+	}
+
+	> p {
+		margin-top: 0;
+		color: #777;
+		font-size: 0.9em;
+	}
+}
+
+.btn-toolbar {
+	margin: 20px 0;
+}

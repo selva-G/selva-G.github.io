@@ -28,6 +28,7 @@
     "metalsmith": "^2.1.0",
     "metalsmith-assets": "^0.1.0",
     "metalsmith-autoprefixer": "^1.1.0",
+    "metalsmith-better-excerpts": "^0.1.7",
     "metalsmith-browser-sync": "^1.1.1",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-drafts": "0.0.1",

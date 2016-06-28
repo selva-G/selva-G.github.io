@@ -18,6 +18,7 @@ var registerHelpers = require('metalsmith-register-helpers');
 var inPlace = require('metalsmith-in-place');
 var collections = require('metalsmith-collections');
 var pagination = require('metalsmith-pagination');
+var excerpts = require('metalsmith-better-excerpts');
 
 Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
@@ -35,6 +36,9 @@ var metalsmith = Metalsmith(__dirname)
       return require('highlight.js').highlightAuto(code, [lang]).value;
     }
   }))
+  .use(excerpts({
+    pruneLength: 150
+  }))
   .use(collections({
     posts: {
       pattern: 'content/posts/*.md',
@@ -44,8 +48,9 @@ var metalsmith = Metalsmith(__dirname)
   }))
   .use(pagination({
     'collections.posts': {
-      perPage: 1,
+      perPage: 15,
       layout: 'posts.hbs',
+      first: 'posts/index.html',
       path: 'posts/:num/index.html'
     }
   }))
