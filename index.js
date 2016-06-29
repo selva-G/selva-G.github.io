@@ -1,7 +1,6 @@
 'use strict'
 
 var fs = require('fs');
-var cheerio = require('cheerio');
 var Metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
@@ -19,12 +18,16 @@ var inPlace = require('metalsmith-in-place');
 var collections = require('metalsmith-collections');
 var pagination = require('metalsmith-pagination');
 var excerpts = require('metalsmith-better-excerpts');
+var define = require('metalsmith-define');
 
 Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
 var metalsmith = Metalsmith(__dirname)
   .source('content')
   .use(drafts())
+  .use(define({
+    moment: require('moment')
+  }))
   .use(registerHelpers())
   .use(inPlace({
     engine: 'handlebars',
@@ -43,7 +46,10 @@ var metalsmith = Metalsmith(__dirname)
     posts: {
       pattern: 'content/posts/*.md',
       sortBy: 'date',
-      reverse: true
+      reverse: true,
+      metadata: {
+        name: 'Articles'
+      }
     }
   }))
   .use(pagination({

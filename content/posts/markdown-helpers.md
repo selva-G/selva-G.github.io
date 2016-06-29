@@ -12,7 +12,7 @@ Provides more weightage to the content
 
 #### Usage
 ```hbs
-{{callout type="success" message="This post is cool"}}
+{{escape-hbs '{{callout type="success" message="This post is cool"}}'}}
 ```
 
 #### Example
@@ -30,7 +30,7 @@ Used to embed iframe
 #### Usage
 
 ```hbs
-{{iframe src="http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/" height="400"}}
+{{escape-hbs '{{iframe src="http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/" height="400"}}'}}
 ```
 
 #### Example

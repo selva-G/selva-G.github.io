@@ -1,6 +1,10 @@
 {{#extend "layout"}}
   {{#content "content"}}
-    <h1>{{title}}</h1>
+    <header id="header">
+      <h1>{{title}}</h1>
+      <date>{{moment date}}</date>
+    </header>
+
     {{{contents}}}
   {{/content}}
 {{/extend}}

@@ -17,9 +17,9 @@ In this post, I'll show you how to build a simple blog archive as a component us
 Lets go with building a simple blog-archive.
 When you register a component, the templates are looked into the `components/` structure.
 
-```handlebars
-{{!components/blog-archive.hbs}}
-{{blog-archive content=content}}
+```hbs
+{{escape-hbs "{{!components/blog-archive.hbs}}"}}
+{{escape-hbs "{{blog-archive content=content}}"}}
 ```
 
 Now we can define our `App.BlogArchiveComponent`
@@ -50,26 +50,28 @@ App.BlogArchiveComponent = Ember.Component.extend({
 Now to determine whether each year or month is expanded or not, we need to have a flag for each item. We can make use of itemController (may be an ObjectController) which wraps each item in an array.
 
 ```hbs
-{{#each archives itemController="yearItem"}}
-  <a {{action toggleProperty 'isExpanded'}}>
-    <i {{bindAttr class="isExpanded:icon-chevron-down:icon-chevron-right"}}></i>
-    {{key}}
-  </a>
-  <span class="muted"> ({{totalYearPosts}}) </span>
-  {{#if isExpanded}}
-    {{#each value itemController="monthItem"}}
-      <a {{action toggleProperty 'isExpanded'}}>
-        <i {{bindAttr class="isExpanded:icon-chevron-down:icon-chevron-right"}}></i>{{key}}
-      </a>
-      <span class="muted"> ({{value.length}}) </span>
-      {{#if isExpanded}}
-        {{#each value}}
-          {{#linkTo 'post' this}}{{name}}{{/linkTo}}
-        {{/each}}
-      {{/if}}  
-    {{/each}}
-  {{/if}}
-{{/each}}
+{{escape-hbs
+  '{{#each archives itemController="yearItem"}}
+    <a {{action toggleProperty "isExpanded"}}>
+      <i {{bindAttr class="isExpanded:icon-chevron-down:icon-chevron-right"}}></i>
+      {{key}}
+    </a>
+    <span class="muted"> ({{totalYearPosts}}) </span>
+    {{#if isExpanded}}
+      {{#each value itemController="monthItem"}}
+        <a {{action toggleProperty "isExpanded"}}>
+          <i {{bindAttr class="isExpanded:icon-chevron-down:icon-chevron-right"}}></i>{{key}}
+        </a>
+        <span class="muted"> ({{value.length}}) </span>
+        {{#if isExpanded}}
+          {{#each value}}
+            {{#linkTo "post" this}}{{name}}{{/linkTo}}
+          {{/each}}
+        {{/if}}  
+      {{/each}}
+    {{/if}}
+  {{/each}}'
+}}
 ```
 
 The itemControllers are defined as,
