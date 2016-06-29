@@ -21,6 +21,8 @@ Provides more weightage to the content
 {{callout type="warning" message="This post is not informative"}}
 {{callout type="error" message="This post is outdated"}}
 
+---
+
 ## iframe
 
 Used to embed iframe

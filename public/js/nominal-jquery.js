@@ -51,3 +51,9 @@ $.prototype.each = function(iteratee, callback) {
     }
   }
 }
+
+$.prototype.on = function(event, callback, useCapture) {
+  this.each(function(element) {
+    element.addEventListener(event, callback, useCapture);
+  });
+}

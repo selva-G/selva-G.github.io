@@ -7,20 +7,19 @@
 }
 
 #nav-section {
-	position: absolute;
+	position: fixed;
+	top: 0;
+	bottom: 0;
 	z-index: 1001;
 	width: 240px;
-	height: 100vh;
 	background: #414048;
 	color: #d8d7d3;
 	-webkit-transform: translate3d(-240px, -50vh,0);
 	transform: translate3d(-240px,-50vh,0);
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
-
 	> nav {
 		margin-top: 50px;
-
 		.list-unstyled > li > a {
 			padding: 10px 20px;
 		}
@@ -33,23 +32,19 @@
 }
 
 #nav-button {
-	position: absolute;
+	position: fixed;
 	margin: 20px;
-	z-index: 1111;
 }
 
 .profile {
 	text-align: center;
 	padding-top: 75px;
-
 	.name {
 		font-size: 1.5em;
 	}
-
 	.desc {
 		font-size: 0.9em;
 	}
-
 	> img {
 		width: 100px;
 		height: 100px;
@@ -61,7 +56,6 @@
 	> h2 {
 		margin-bottom: 0;
 	}
-
 	> p {
 		margin-top: 0;
 		color: #777;
@@ -71,4 +65,11 @@
 
 .btn-toolbar {
 	margin: 20px 0;
+}
+
+hr {
+	margin-top: 3.5em;
+	margin-bottom: 3.5em;
+	border-top: 0;
+	border-color: #ddd;
 }

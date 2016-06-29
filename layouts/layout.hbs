@@ -15,6 +15,7 @@
         <button id="nav-button">Menu</button>
       {{/block}}
       <section id="nav-section">
+        <button class="close-button" id="close-button">Close Menu</button>
         <div class="profile">
           <img src="/images/kick-512x512.jpeg" />
           <div class="name">selvagsz</div>
@@ -41,10 +42,13 @@
     {{#block "scripts"}}
       <script src="/js/nominal-jquery.js"></script>
       <script>
-        var $navButton = $('#nav-button');
-        $navButton[0].addEventListener('click', function() {
-          $('#wrapper').toggleClass('show-menu')
-        });
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        $('#close-button').on('click', toggleMenu);
       </script>
     {{/block}}
   </body>
