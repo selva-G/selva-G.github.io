@@ -18,16 +18,12 @@ var inPlace = require('metalsmith-in-place');
 var collections = require('metalsmith-collections');
 var pagination = require('metalsmith-pagination');
 var excerpts = require('metalsmith-better-excerpts');
-var define = require('metalsmith-define');
 
 Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
 
 var metalsmith = Metalsmith(__dirname)
   .source('content')
   .use(drafts())
-  .use(define({
-    moment: require('moment')
-  }))
   .use(registerHelpers())
   .use(inPlace({
     engine: 'handlebars',
