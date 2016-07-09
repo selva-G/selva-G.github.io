@@ -42,24 +42,21 @@ var metalsmith = Metalsmith(__dirname)
     posts: {
       pattern: 'content/posts/*.md',
       sortBy: 'date',
-      reverse: true,
-      metadata: {
-        name: 'Articles'
-      }
+      reverse: true
     }
   }))
   .use(pagination({
     'collections.posts': {
       perPage: 15,
       layout: 'posts.hbs',
-      first: 'posts/index.html',
+      first: 'index.html',
       path: 'posts/:num/index.html'
     }
   }))
-  .use(layouts('handlebars'))
   .use(permalinks({
     pattern: ':collection/:title'
   }))
+  .use(layouts('handlebars'))
   .use(assets())
   .use(sass({
     file: './public/styles/app.scss',

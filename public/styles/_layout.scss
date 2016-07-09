@@ -22,6 +22,11 @@
 		margin-top: 50px;
 		.list-unstyled > li > a {
 			padding: 10px 20px;
+			color: #d8d7d3;
+
+			&:hover, &.active {
+				background-color: #2f2d33;
+			}
 		}
 	}
 }
