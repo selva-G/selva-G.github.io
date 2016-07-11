@@ -6,7 +6,7 @@ collection: posts
 date: 2016-07-01
 ---
 
-Its been a month since I dove into react and it has been an incredible journey, where I just concentrated in learning more things.
+Its ben a month since I dove into react and it has been an incredible journey, where I just concentrated in learning more things.
 
 - I was able to get my head around webpack, react, react-router, redux, thunks
 - Started with a minor contribution to [react/react-tabs](https://github.com/reactjs/react-tabs/pull/108)

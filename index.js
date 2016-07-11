@@ -18,13 +18,16 @@ var inPlace = require('metalsmith-in-place');
 var collections = require('metalsmith-collections');
 var pagination = require('metalsmith-pagination');
 var excerpts = require('metalsmith-better-excerpts');
+var concat = require('metalsmith-concat');
 
-Handlebars.registerPartial('layout', fs.readFileSync('layouts/layout.hbs', 'utf8'));
+Handlebars.registerPartial('layout', fs.readFileSync('src/layouts/layout.hbs', 'utf8'));
 
-var metalsmith = Metalsmith(__dirname)
-  .source('content')
+Metalsmith(__dirname)
+  .source('src/content')
   .use(drafts())
-  .use(registerHelpers())
+  .use(registerHelpers({
+    directory: 'src/helpers'
+  }))
   .use(inPlace({
     engine: 'handlebars',
     pattern: '**/*.md'
@@ -56,31 +59,64 @@ var metalsmith = Metalsmith(__dirname)
   .use(permalinks({
     pattern: ':collection/:title'
   }))
-  .use(layouts('handlebars'))
-  .use(assets())
+  .use(layouts({
+    engine: 'handlebars',
+    directory: 'src/layouts'
+  }))
+  .build(function(err) {
+    if (err) throw err;
+  });
+
+Metalsmith(__dirname)
+  .source('src/styles')
   .use(sass({
-    file: './public/styles/app.scss',
-    includePaths: ['./public/styles/']
+    includePaths: ['./src/styles/'],
+    outputDir: './css'
+  }))
+  .use(concat({
+    files: '**/*.css',
+    output: 'styles/app.css',
+    forceOutput: true
   }))
   .use(autoprefixer())
-  .use(assets({
-    source: './vendor/highlight/',
-    destination: './vendor/'
-  }));
+  .build(function(err) {
+    if (err) throw err;
+  });
 
-metalsmith.use(browserSync({
-  server: './build',
-  files: [
-    'content/**/*.md',
-    'layouts/**/*.hbs',
-    'public/**/*',
-    'helpers/**/*'
-  ],
-  ui: false,
-  open: false
-}));
+  Metalsmith(__dirname)
+    .source('src/js')
+    .use(assets({
+      source: './src/js',
+      destination: 'js/'
+    }))
+    .build(function(err) {
+      if (err) throw err;
+    });
 
-metalsmith.build(function(err) {
-  if (err) throw err;
-  console.log('Build finished!');
-});
+  Metalsmith(__dirname)
+    .source('src/images')
+    .use(assets({
+      source: './src/images',
+      destination: 'images/'
+    }))
+    .build(function(err) {
+      if (err) throw err;
+    });
+
+// Metalsmith(__dirname)
+//   .use(browserSync({
+//     server: './build',
+//     files: [
+//       'content/**/*.md',
+//       'layouts/**/*.hbs',
+//       'public/**/*',
+//       'helpers/**/*',
+//       'styles/**/*'
+//     ],
+//     ui: false,
+//     open: false
+//   }))
+//   .build(function(err) {
+//     if (err) throw err;
+//     console.log('Build finished!');
+//   });
