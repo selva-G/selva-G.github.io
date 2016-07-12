@@ -18,8 +18,13 @@ const pagination = require('metalsmith-pagination');
 const excerpts = require('metalsmith-better-excerpts');
 const permalinks = require('metalsmith-permalinks');
 const Handlebars = require('handlebars');
+const browserSync = require('browser-sync').create();
 
 Handlebars.registerPartial('layout', fs.readFileSync('src/layouts/layout.hbs', 'utf8'));
+
+gulp.task('clean', () => {
+  return del('build/')
+});
 
 gulp.task('build:metalsmith', () => {
   return gulp.src('src/content/**/*.md')
@@ -80,7 +85,8 @@ gulp.task('build:css', () => {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('./build/styles'));
+    .pipe(gulp.dest('./build/styles'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('build:js', () => {
@@ -94,10 +100,29 @@ gulp.task('build:images', () => {
     .pipe(gulp.dest('./build/images'));
 });
 
-gulp.task('clean', () => {
-  return del('build/')
+gulp.task('build', (cb) => {
+  runSequence('clean', ['build:metalsmith', 'build:css', 'build:js', 'build:images'], cb);
 });
 
-gulp.task('default', () => {
-  runSequence('clean', ['build:metalsmith', 'build:css', 'build:js', 'build:images']);
+gulp.task('reload', () => {
+  browserSync.reload();
 });
+
+gulp.task('serve', ['build'], () => {
+  browserSync.init({
+    server: './build'
+  });
+
+  gulp.watch('src/styles/*.scss', ['build:css']);
+  gulp.watch('src/images/**/*', () => {
+    runSequence('build:images', 'reload');
+  });
+  gulp.watch('src/js/**/*', () => {
+    runSequence('build:js', 'reload');
+  });
+  gulp.watch('src/content/**/*.md', () => {
+    runSequence('build:metalsmith', 'reload');
+  });
+});
+
+gulp.task('default', ['build']);
