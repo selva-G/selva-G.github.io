@@ -22,12 +22,34 @@ const browserSync = require('browser-sync').create();
 
 Handlebars.registerPartial('layout', fs.readFileSync('src/layouts/layout.hbs', 'utf8'));
 
+function sourcePath(path) {
+  return path ? `./src/${path}` : './src';
+}
+
+function distPath(path) {
+  return path? `./build/${path}` : './build';
+}
+
+const paths = {
+  source_content: sourcePath('content'),
+  source_helpers: sourcePath('helpers'),
+  source_layouts: sourcePath('layouts'),
+  source_css: sourcePath('styles'),
+  source_js: sourcePath('js'),
+  source_images: sourcePath('images'),
+
+  dist: distPath(),
+  dist_css: distPath('styles'),
+  dist_js: distPath('js'),
+  dist_images: distPath('images')
+}
+
 gulp.task('clean', () => {
-  return del('build/')
+  return del(paths.dist)
 });
 
 gulp.task('build:metalsmith', () => {
-  return gulp.src('src/content/**/*.md')
+  return gulp.src(`${paths.source_content}/**/*.md`)
     .pipe(frontMatter().on('data', (file) => {
       assign(file, file.frontMatter);
       delete file.frontMatter;
@@ -36,7 +58,7 @@ gulp.task('build:metalsmith', () => {
       gulpsmith()
         .use(drafts())
         .use(registerHelpers({
-          directory: 'src/helpers'
+          directory: paths.source_helpers
         }))
         .use(inPlace({
           engine: 'handlebars',
@@ -71,33 +93,33 @@ gulp.task('build:metalsmith', () => {
         }))
         .use(layouts({
           engine: 'handlebars',
-          directory: 'src/layouts'
+          directory: paths.source_layouts
         }))
     )
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('build:css', () => {
-  return gulp.src('src/styles/**/*')
+  return gulp.src(`${paths.source_css}/**/*`)
     .pipe(sass())
     .pipe(concat('site.css'))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('./build/styles'))
+    .pipe(gulp.dest(paths.dist_css))
     .pipe(browserSync.stream());
 });
 
 gulp.task('build:js', () => {
-  return gulp.src('src/js/**/*')
+  return gulp.src(`${paths.source_js}/**/*`)
     .pipe(concat('site.js'))
-    .pipe(gulp.dest('./build/js'));
+    .pipe(gulp.dest(paths.dist_js));
 });
 
 gulp.task('build:images', () => {
-  return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('./build/images'));
+  return gulp.src(`${paths.source_images}/**/*`)
+    .pipe(gulp.dest(paths.dist_images));
 });
 
 gulp.task('build', (cb) => {
@@ -110,17 +132,21 @@ gulp.task('reload', () => {
 
 gulp.task('serve', ['build'], () => {
   browserSync.init({
-    server: './build'
+    server: paths.dist
   });
 
-  gulp.watch('src/styles/*.scss', ['build:css']);
-  gulp.watch('src/images/**/*', () => {
+  gulp.watch(`${paths.source_css}/**/*`, ['build:css']);
+  gulp.watch(`${paths.source_images}/**/*`, () => {
     runSequence('build:images', 'reload');
   });
-  gulp.watch('src/js/**/*', () => {
+  gulp.watch(`${paths.source_js}/**/*`, () => {
     runSequence('build:js', 'reload');
   });
-  gulp.watch('src/content/**/*.md', () => {
+  gulp.watch([
+    `${paths.source_content}/**/*.md`,
+    `${paths.source_helpers}/**/*`,
+    `${paths.source_layouts}/**/*`
+  ], () => {
     runSequence('build:metalsmith', 'reload');
   });
 });
