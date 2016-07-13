@@ -5,8 +5,9 @@ title: A simple Blog Archive using Ember Component
 collection: posts
 date: 2013-08-13
 ---
-
-{{callout type="error" message="This post is outdated"}}
+```callout-error
+This post is outdated
+```
 
 In this post, I'll show you how to build a simple blog archive as a component using Em.Component. Before start coding, lets skim at the Ember.Components
 

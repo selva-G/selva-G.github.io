@@ -20,21 +20,18 @@
 	transition: transform 0.3s;
 	> nav {
 		margin-top: 50px;
-
 		.list-unstyled > li {
 			&.disabled {
 				cursor: not-allowed;
-
 				> a {
 					pointer-events: none;
 				}
 			}
-
 			> a {
 				padding: 10px 20px;
 				color: #d8d7d3;
-
-				&:hover, &.active {
+				&.active,
+				&:hover {
 					background-color: #2f2d33;
 				}
 			}
@@ -83,16 +80,8 @@
 	margin: 20px 0;
 }
 
-hr {
-	margin-top: 3.5em;
-	margin-bottom: 3.5em;
-	border-top: 0;
-	border-color: #ddd;
-}
-
 #header {
 	margin-bottom: 2em;
-
 	h1 {
 		margin: 0;
 	}
@@ -100,4 +89,14 @@ hr {
 
 .posts-list-page .close-button {
 	display: none;
+}
+
+.footlinks {
+	margin: 70px 0;
+	> a {
+		display: none;
+		&.show {
+			display: inline-block;
+		}
+	}
 }

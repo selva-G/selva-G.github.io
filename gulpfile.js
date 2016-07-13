@@ -100,7 +100,7 @@ gulp.task('build:metalsmith', () => {
 });
 
 gulp.task('build:css', () => {
-  return gulp.src(`${paths.source_css}/**/*`)
+  return gulp.src(`${paths.source_css}/**/*.scss`)
     .pipe(sass())
     .pipe(concat('site.css'))
     .pipe(autoprefixer({
@@ -135,7 +135,7 @@ gulp.task('serve', ['build'], () => {
     server: paths.dist
   });
 
-  gulp.watch(`${paths.source_css}/**/*`, ['build:css']);
+  gulp.watch(`${paths.source_css}/**/*.scss`, ['build:css']);
   gulp.watch(`${paths.source_images}/**/*`, () => {
     runSequence('build:images', 'reload');
   });

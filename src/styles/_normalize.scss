@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $font-family;
   margin: 0;
   line-height: 1.8;
 }
@@ -65,4 +65,11 @@ blockquote {
   p {
     margin: 0;
   }
+}
+
+hr {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+  border-top: 0;
+  border-color: #ddd;
 }

@@ -11,15 +11,28 @@ date: 2016-06-28
 Provides more weightage to the content
 
 #### Usage
-```hbs
-{{escape-hbs '{{callout type="success" message="This post is cool"}}'}}
-```
+```text
+```callout-success
+Callouts are cool & simple
+``````
 
 #### Example
-{{callout type="success" message="This post is cool"}}
-{{callout type="info" message="This post is informative"}}
-{{callout type="warning" message="This post is not informative"}}
-{{callout type="error" message="This post is outdated"}}
+
+```callout-success
+This post is cool
+```
+
+```callout-info
+This post is informative
+```
+
+```callout-warning
+This post is not informative
+```
+
+```callout-error
+This post is outdated
+```
 
 ---
 
