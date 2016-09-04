@@ -3,29 +3,24 @@
   description: React button component reflecting promise state on async actions.
   github-slug: react-async-button
   demoURL: https://jsbin.com/hugigok/18/edit?js,output
-  date: 21-06-2016
   tags: react
 
 - name: Ember Image Magnifier
   description: An ember addon for image magnification.
   github-slug: ember-image-magnifier
-  date: 06-03-2016,
   tags: ember
 
 - name: Ember Carousel
   description: An ember addon for carousel component.
   github-slug: ember-carousel
-  date: 29-07-2015
   tags: ember
 
 - name: Ember Facebook Video
   description: An ember addon to embed facebook videos.
   github-slug: ember-facebook-video
-  date: 26-08-2015
   tags: ember
 
 - name: Gunther
   description: A bot that is designed to integrate with gitlab & gitlab-ci.
   github-slug: gunther
-  date: 26-08-2015
   tags: bot, gitlab

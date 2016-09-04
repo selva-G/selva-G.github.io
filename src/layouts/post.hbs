@@ -6,8 +6,8 @@
     </header>
     {{{contents}}}
     <div class="footlinks">
-      <a class="pull-right {{if previous.path 'show'}}" href="/{{previous.path}}">{{previous.title}} >></a>
-      <a class={{if next.path 'show'}} href="/{{next.path}}"><< {{next.title}}</a>
+      <a class="pull-right {{ifeq previous.path 'show'}}" href="/{{previous.path}}">{{previous.title}} >></a>
+      <a class={{ifeq next.path 'show'}} href="/{{next.path}}"><< {{next.title}}</a>
     </div>
   {{/content}}
 {{/extend}}
