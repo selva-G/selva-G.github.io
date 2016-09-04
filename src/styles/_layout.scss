@@ -3,7 +3,7 @@
 	max-width: 800px;
 	min-height: 100vh;
 	padding: 30px;
-	margin: auto;
+	margin-left: 240px;
 }
 
 #nav-section {
@@ -14,9 +14,7 @@
 	width: 240px;
 	background: #414048;
 	color: #d8d7d3;
-	-webkit-transform: translate3d(-240px, -50vh,0);
-	transform: translate3d(-240px,-50vh,0);
-	-webkit-transition: -webkit-transform 0.3s;
+	transform: translateX(-240px);
 	transition: transform 0.3s;
 	> nav {
 		margin-top: 50px;
@@ -40,8 +38,7 @@
 }
 
 #wrapper.show-menu #nav-section {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
+	transform: translateX(0);
 }
 
 #nav-button {

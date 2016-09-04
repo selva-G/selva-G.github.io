@@ -9,12 +9,12 @@
   </head>
 
   <body id={{pageId}}>
-    <div id="wrapper" class="{{if pagination.name 'show-menu posts-list-page'}}">
+    <div id="wrapper" class="show-menu">
       {{#block "nav"}}
         <button id="nav-button">Menu</button>
       {{/block}}
       <section id="nav-section">
-        <button class="close-button" id="close-button">Close Menu</button>
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
         <div class="profile">
           <img src="/images/kick-512x512.jpeg" />
           <div class="name">selvagsz</div>
@@ -22,9 +22,9 @@
         </div>
         <nav>
           <ul class="list-unstyled">
-            <li><a class="active" href="/">Blog</a></li>
-            <li class="disabled"><a href="/codeworks">Code Works</a></li>
-            <li class="disabled"><a href="/profile">Profile</a></li>
+            <li><a class="{{if collection.[0] 'active'}}" href="/">Blog</a></li>
+            <li><a href="/codeworks">Code Works</a></li>
+            <li><a href="/profile">Profile</a></li>
           </ul>
         </nav>
       </section>

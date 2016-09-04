@@ -1,4 +1,7 @@
+'use strict';
+
 const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
 const del = require('del');
@@ -17,7 +20,10 @@ const collections = require('metalsmith-collections');
 const pagination = require('metalsmith-pagination');
 const excerpts = require('metalsmith-better-excerpts');
 const permalinks = require('metalsmith-permalinks');
+const metadata = require('metalsmith-metadata');
 const Handlebars = require('handlebars');
+const consolidate = require('consolidate');
+const co = require('co');
 const browserSync = require('browser-sync').create();
 
 Handlebars.registerPartial('layout', fs.readFileSync('src/layouts/layout.hbs', 'utf8'));
@@ -48,8 +54,8 @@ gulp.task('clean', () => {
   return del(paths.dist)
 });
 
-gulp.task('build:metalsmith', () => {
-  return gulp.src(`${paths.source_content}/**/*.md`)
+gulp.task('build:metalsmith', (cb) => {
+  return gulp.src(`${paths.source_content}/**/*`)
     .pipe(frontMatter().on('data', (file) => {
       assign(file, file.frontMatter);
       delete file.frontMatter;
@@ -95,8 +101,30 @@ gulp.task('build:metalsmith', () => {
           engine: 'handlebars',
           directory: paths.source_layouts
         }))
+        .use(metadata({
+          codeworks: 'codeworks.yml'
+        }))
+        .use((files, metalsmith, done) => {
+          let file = path.resolve(metalsmith.source(), './layouts/codeworks.hbs');
+          let metadata = metalsmith.metadata();
+          let engine = 'handlebars';
+          let render = consolidate[engine];
+
+          co(metalsmith.readFile(file)).then((data) => {
+            render(file, metadata, (err, str) => {
+              if (err) {
+                return done(err);
+              }
+
+              data.contents = new Buffer(str);
+              files['codeworks/index.html'] = data;
+              done();
+            });
+          });
+        })
     )
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist))
+    .on('end', cb);
 });
 
 gulp.task('build:css', () => {

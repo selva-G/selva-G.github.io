@@ -1,0 +1,14 @@
+{{#extend "layout"}}
+  {{#content "content"}}
+    <h1>Code Works</h1>
+
+    <ul class="list-unstyled posts-list">
+      {{#each codeworks}}
+        <li>
+          <h2><a href="https://github.com/selvagsz/{{this.github-slug}}">{{name}}</a></h2>
+          <p>{{this.description}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  {{/content}}
+{{/extend}}
