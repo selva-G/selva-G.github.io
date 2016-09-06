@@ -13,6 +13,7 @@
 - name: Ember Carousel
   description: An ember addon for carousel component.
   github-slug: ember-carousel
+  demoURL: https://selvagsz.github.io/ember-carousel/
   tags: ember
 
 - name: Ember Facebook Video
