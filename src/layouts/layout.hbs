@@ -22,9 +22,9 @@
         </div>
         <nav>
           <ul class="list-unstyled">
-            <li><a class="{{ifeq collection.[0] 'active'}}" href="/">Blog</a></li>
-            <li><a href="/codeworks">Code Works</a></li>
-            <li><a href="/profile">Profile</a></li>
+            <li><a class="{{ifeq activeLink 'blog'}}" href="/">Blog</a></li>
+            <li><a class="{{ifeq activeLink 'codeworks'}}" href="/codeworks">Code Works</a></li>
+            <li><a class="{{ifeq activeLink 'profile'}}" href="/profile">Profile</a></li>
           </ul>
         </nav>
       </section>
@@ -49,7 +49,7 @@
         }
 
         $('#nav-button').on('click', toggleMenu);
-        $('#close-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
       </script>
     {{/block}}
   </body>

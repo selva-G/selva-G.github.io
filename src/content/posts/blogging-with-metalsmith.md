@@ -4,6 +4,7 @@ pageTitle: Blogging with Metalsmith
 title: Blogging with Metalsmith
 collection: posts
 date: 2016-07-11
+draft: true
 ---
 
 Metalsmith is a JS static site generator.
@@ -26,6 +27,7 @@ Metalsmith(__dirname)
   .source('src/')
   .destination('build/')
   .build(function(err) {
-    if (err) throw error;    
+    if (err) throw error;
   })
 ```
+
