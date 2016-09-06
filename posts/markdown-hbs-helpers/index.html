@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title>Markdown hbs helpers - Metalsmith</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="" href="/">Blog</a></li>
+            <li><a class="" href="/codeworks">Code Works</a></li>
+            <li><a class="" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>Markdown HBS helpers</h1>
+      <date>28 Jun 2016</date>
+    </header>
+    <h2 id="callouts">Callouts</h2>
+<p>Provides more weightage to the content</p>
+<h4 id="usage">Usage</h4>
+<pre><code class="hljs lang-text">```callout-success
+Callouts are cool &amp; simple
+```
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="hljs lang-callout-success">This post is cool
+</code></pre>
+<pre><code class="hljs lang-callout-info">This post is informative
+</code></pre>
+<pre><code class="hljs lang-callout-warning">This post is not informative
+</code></pre>
+<pre><code class="hljs lang-callout-error">This post is outdated
+</code></pre>
+<hr>
+<h2 id="iframe">iframe</h2>
+<p>Used to embed iframe</p>
+<h4 id="usage">Usage</h4>
+<pre><code class="hljs lang-hbs"><span class="xml"></span><span class="hljs-template-variable">{{iframe src="http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/" height="400"}}</span><span class="xml"></span>
+</code></pre>
+<h4 id="example">Example</h4>
+<iframe src=http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/ height=400 width="100%" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+    <div class="footlinks">
+      <a class="pull-right show" href="/posts/my-one-month-on-reactjs">My one month on reactjs >></a>
+      <a class=show href="/posts/bar-chart-with-simple-tooltip"><< Bar Chart with Simple Tooltip</a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title>Blogging with Metalsmith</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="" href="/">Blog</a></li>
+            <li><a class="" href="/codeworks">Code Works</a></li>
+            <li><a class="" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>Blogging with Metalsmith</h1>
+      <date>11 Jul 2016</date>
+    </header>
+    <p>Metalsmith is a JS static site generator.</p>
+<h2 id="why-metalsmith-">Why Metalsmith?</h2>
+<p>It all started when exploring Metalsmith for our technical documentation. And, I built this blog to serve as a POC. There are few reasons to opt for Metalsmith though</p>
+<ol>
+<li>Plugin architecture. At core, metalsmith is merely 200 lines of code. Its architecture is what it gives the flexibility &amp; composability. Similar to gulp, but built with blogging in mind.</li>
+<li>Its Javascript, my all time favorite playground.</li>
+</ol>
+<pre><code class="hljs lang-callout-warning">Many plugins lacks documentation &amp; some are not quite active. Often, you'll find yourself into the plugin's source code to learn the plugin APIs. Hope this changes soon.
+</code></pre>
+<p>At core, metalsmith takes files as an input, invokes the plugins on them &amp; transforms them into static assets. Simplest form, would be</p>
+<pre><code class="hljs lang-js">Metalsmith(__dirname)
+  .source(<span class="hljs-string">'src/'</span>)
+  .destination(<span class="hljs-string">'build/'</span>)
+  .build(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> error;
+  })
+</code></pre>
+
+    <div class="footlinks">
+      <a class="pull-right " href="/"> >></a>
+      <a class=show href="/posts/my-one-month-on-reactjs"><< My one month on reactjs</a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>

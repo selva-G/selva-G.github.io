@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title>Simple Tooltip - D3</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="" href="/">Blog</a></li>
+            <li><a class="" href="/codeworks">Code Works</a></li>
+            <li><a class="" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>Bar Chart with Simple Tooltip</h1>
+      <date>21 Oct 2013</date>
+    </header>
+    <p>D3js is such an awesome framework that helps out in manipulating the DOM based on data. The data is bound to the nodes and is made available on every operators (.style(), .attr() , etc).</p>
+<p>I just found damn easy to build basic charts with d3. In this post, i will just show you building an basic bar chart with simple tooltip implementation without using any external library for tooltips.</p>
+<p>I make use of the DOM API  <code>Element.getBoundingClient()</code>. The above api seems very useful in many cases (atleast for me) and found it be compatible with all latest browsers. Moz definition for <code>getBoundingClientRect()</code></p>
+<blockquote>
+<p>Returns a text rectangle object that encloses a group of text rectangles.</p>
+</blockquote>
+<p>You might have a quick look on <a href="http://ejohn.org/blog/getboundingclientrect-is-awesome/">John Resig&#39;s post on getBoundingClientRect</a>.</p>
+<p>I just skip on building of bar chart with d3 as there are tons of examples available out there.
+I have build a <a href="http://jsfiddle.net/selvaG/4kgwP/3/">bar chart</a> with some sample data.</p>
+<p>Now onto the next step of implementing tooltip that has to be shown on mouseover of the rect bars. I used the bootstrap (css alone) for the tooltips. All we need to do is to append the tooltip div to the body and position it on mouseover and clear them on mouseout.</p>
+<p>We can register a <code>mouseover</code> and <code>mouseout</code> event listeners on the rect bars using <code>.on</code> operator.
+The listener function gets called with the current datum bound with the bar , current index and this being the current DOM element. <a href="https://github.com/mbostock/d3/wiki/Selections#wiki-on">Reference</a></p>
+<p>Using the getBoundingClientRect(), we can get the dimensions of the rect bar.  Thereby we can pass the left and top position to the tooltip function along with the data to be displayed.</p>
+<pre><code class="hljs lang-javascript">.on(<span class="hljs-string">'mouseover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+  <span class="hljs-keyword">var</span> clientRect = <span class="hljs-keyword">this</span>.getBoundingClientRect();
+  toolTip.show( {top: clientRect.top, left: clientRect.left + clientRect.width/<span class="hljs-number">2</span> }, d );
+}).on(<span class="hljs-string">'mouseout'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+  toolTip.cleanup();
+});
+</code></pre>
+<p>You could view the end result <a href="http://jsfiddle.net/selvaG/4kgwP/6/">here</a>.</p>
+<iframe src=http://jsfiddle.net/selvaG/4kgwP/6/embedded/result/ height=400 width="100%" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+    <div class="footlinks">
+      <a class="pull-right show" href="/posts/markdown-hbs-helpers">Markdown HBS helpers >></a>
+      <a class=show href="/posts/a-simple-blog-archive-using-ember-component"><< A simple Blog Archive using Ember Component</a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>

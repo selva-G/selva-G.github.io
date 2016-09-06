@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title>My journey on react - Reactjs</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="" href="/">Blog</a></li>
+            <li><a class="" href="/codeworks">Code Works</a></li>
+            <li><a class="" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>My one month on reactjs</h1>
+      <date>01 Jul 2016</date>
+    </header>
+    <p>Its been a month since I dove into react and it has been an incredible journey, where I just concentrated in learning more things.</p>
+<ul>
+<li>I was able to get my head around webpack, react, react-router, redux, thunks</li>
+<li>Started with a minor contribution to <a href="https://github.com/reactjs/react-tabs/pull/108">react/react-tabs</a></li>
+<li>Rolled out a react package, <a href="https://github.com/selvagsz/react-async-button">react-async-button</a></li>
+<li>Completed my POC &amp; was able to convince my team to migrate our app from angularjs(1.12.x) &gt;&gt; react</li>
+<li>Began to dive into the react source code (<a href="https://gist.github.com/selvagsz/4889bfd6d3716bc56543d30597d9728a">https://gist.github.com/selvagsz/4889bfd6d3716bc56543d30597d9728a</a>)</li>
+</ul>
+<p>Stepping into second month of my react journey,</p>
+<ul>
+<li>Getting started with react-native</li>
+</ul>
+<h2 id="things-planned-for-this-month">Things planned for this month</h2>
+<ul>
+<li>POC on react-native</li>
+<li>Build an app with react &amp; react-native as well</li>
+<li>Start blogging about my experience with reactjs</li>
+</ul>
+
+    <div class="footlinks">
+      <a class="pull-right " href="/"> >></a>
+      <a class=show href="/posts/markdown-hbs-helpers"><< Markdown HBS helpers</a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>

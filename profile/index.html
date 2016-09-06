@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title></title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="blog" href="/">Blog</a></li>
+            <li><a class="codeworks" href="/codeworks">Code Works</a></li>
+            <li><a class="profile" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>My Profile</h1>
+      <date>06 Sep 2016</date>
+    </header>
+    <p>Front End Ninja @Razorpay, Former Code Chef @Zoho</p>
+<p>You can reach me via selvaganeshbsg@gmail.com</p>
+
+    <div class="footlinks">
+      <a class="pull-right " href="/"> >></a>
+      <a class= href="/"><< </a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>

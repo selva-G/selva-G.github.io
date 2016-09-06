@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <title>Blog Archive - Emberjs</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+      <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+
+  <body id=>
+    <div id="wrapper" class="show-menu">
+        <button id="nav-button">Menu</button>
+      <section id="nav-section">
+        <!-- <button class="close-button" id="close-button">Close Menu</button> -->
+        <div class="profile">
+          <img src="/images/kick-512x512.jpeg" />
+          <div class="name">selvagsz</div>
+          <div class="desc">Front End Developer</div>
+        </div>
+        <nav>
+          <ul class="list-unstyled">
+            <li><a class="" href="/">Blog</a></li>
+            <li><a class="" href="/codeworks">Code Works</a></li>
+            <li><a class="" href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <article id="main-section">
+    <header id="header">
+      <h1>A simple Blog Archive using Ember Component</h1>
+      <date>13 Aug 2013</date>
+    </header>
+    <pre><code class="hljs lang-callout-error">This post is outdated
+</code></pre>
+<p>In this post, I&#39;ll show you how to build a simple blog archive as a component using Em.Component. Before start coding, lets skim at the Ember.Components</p>
+<ul>
+<li>An Ember.Component is an isolated Ember.View whose context and controller properties are set to the view itself. (You can find this at <a href="https://github.com/emberjs/ember.js/blob/master/packages/ember-views/lib/views/component.js#LC89-93">https://github.com/emberjs/ember.js/blob/master/packages/ember-views/lib/views/component.js#LC89-93</a>).  </li>
+<li>The property access and target action in the templates goes to the view by default.</li>
+<li>However, the component inherits a controller from the context in which it is used. We can also send an action to the components&#39; controller by calling <code>sendAction()</code> method. You can view the implementation  here.</li>
+</ul>
+<p>Lets go with building a simple blog-archive.
+When you register a component, the templates are looked into the <code>components/</code> structure.</p>
+<pre><code class="hljs lang-hbs"><span class="xml"></span><span class="hljs-comment">{{!components/blog-archive.hbs}}</span><span class="xml">
+</span><span class="hljs-template-variable">{{blog-archive content=content}}</span><span class="xml"></span>
+</code></pre>
+<p>Now we can define our <code>App.BlogArchiveComponent</code></p>
+<pre><code class="hljs lang-js">App.BlogArchiveComponent = Ember.Component.extend({
+  months: [
+    <span class="hljs-string">'January'</span>,
+    <span class="hljs-string">'Feburary'</span>,
+    <span class="hljs-string">'March'</span>,
+    <span class="hljs-string">'April'</span>,
+    <span class="hljs-string">'May'</span>,
+    <span class="hljs-string">'June'</span>,
+    <span class="hljs-string">'July'</span>,
+    <span class="hljs-string">'August'</span>,
+    <span class="hljs-string">'September'</span>,
+    <span class="hljs-string">'October'</span>,
+    <span class="hljs-string">'November'</span>,
+    <span class="hljs-string">'December'</span>
+  ],
+
+  archives: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+     <span class="hljs-comment">//code logic to return an tree-like array as year --&gt; months --&gt; posts</span>
+  }.property(<span class="hljs-string">'content.length'</span>)
+});
+</code></pre>
+<p>Now to determine whether each year or month is expanded or not, we need to have a flag for each item. We can make use of itemController (may be an ObjectController) which wraps each item in an array.</p>
+<pre><code class="hljs lang-hbs"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> archives itemController=<span class="hljs-string">"yearItem"</span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> </span></span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">action</span> toggleProperty "isExpanded"}}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> </span></span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">bindAttr</span> class="isExpanded:icon-chevron-down:icon-chevron-right"}}</span><span class="xml"><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      </span><span class="hljs-template-variable">{{key}}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"muted"</span>&gt;</span> (</span><span class="hljs-template-variable">{{totalYearPosts}}</span><span class="xml">) <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> isExpanded}}</span><span class="xml">
+      </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> value itemController=<span class="hljs-string">"monthItem"</span>}}</span><span class="xml">
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> </span></span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">action</span> toggleProperty "isExpanded"}}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">i</span> </span></span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">bindAttr</span> class="isExpanded:icon-chevron-down:icon-chevron-right"}}</span><span class="xml"><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span></span><span class="hljs-template-variable">{{key}}</span><span class="xml">
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"muted"</span>&gt;</span> (</span><span class="hljs-template-variable">{{value.length}}</span><span class="xml">) <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> isExpanded}}</span><span class="xml">
+          </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> value}}</span><span class="xml">
+            </span><span class="hljs-template-tag">{{#<span class="hljs-name">linkTo</span> <span class="hljs-string">"post"</span> this}}</span><span class="xml"></span><span class="hljs-template-variable">{{name}}</span><span class="xml"></span><span class="hljs-template-tag">{{/<span class="hljs-name">linkTo</span>}}</span><span class="xml">
+          </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+        </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml">  
+      </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+    </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml">
+  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span>
+</code></pre>
+<p>The itemControllers are defined as,</p>
+<pre><code class="hljs lang-js">App.YearItemController = Ember.ObjectController.extend({
+  isExpanded: <span class="hljs-literal">false</span>,
+  totalYearPosts: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> totalPosts = <span class="hljs-number">0</span>;    
+    <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'content.value'</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">post,idx</span>)</span>{
+      totalPosts += post.get(<span class="hljs-string">'value.length'</span>);
+    })
+    <span class="hljs-keyword">return</span> totalPosts;
+  }.property()
+});
+
+App.MonthItemController = Ember.ObjectController.extend({
+  isExpanded: <span class="hljs-literal">false</span>
+});
+</code></pre>
+<p>You can view it in action in the below fiddle.</p>
+<iframe src=http://jsfiddle.net/selvaG/2Kmx8/3/embedded/ height=400 width="100%" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+    <div class="footlinks">
+      <a class="pull-right show" href="/posts/bar-chart-with-simple-tooltip">Bar Chart with Simple Tooltip >></a>
+      <a class=show href="/posts/hello-world"><< Hello World</a>
+    </div>
+      </article>
+
+      <footer id="footer">
+      </footer>
+    </div>
+
+      <script src="/js/site.js"></script>
+      <script>
+        var $wrapper = $('#wrapper');
+        function toggleMenu() {
+          $wrapper.toggleClass('show-menu');
+        }
+
+        $('#nav-button').on('click', toggleMenu);
+        // $('#close-button').on('click', toggleMenu);
+      </script>
+  </body>
+</html>
